@@ -18,11 +18,11 @@ pipeline {
                 sh "java -version"
             }
         }
-        #stage('Git checkout') {
-        #    steps {
-        #        git branch: 'main', url: 'https://github.com/Akshai183/jfrogartifactory.git'
-        #    }
-        #}
+        stage('Git checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Akshai183/jfrogartifactory.git'
+            }
+        }
         stage('Dev mvn clean') {
             steps { 
                 sh "mvn clean"
