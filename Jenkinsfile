@@ -38,8 +38,6 @@ pipeline {
               script {
                 sh "mvn versions:set -DnewVersion=Dev-1.0.${BUILD_NUMBER}"
                 sh "mvn package install"
-                sh "sudo rm -rf /home/ubuntu/.m2/settings.xml"//
-                sh "sudo cp dev-settings.xml /home/ubuntu/.m2/settings.xml"
                      }
             }
         }
