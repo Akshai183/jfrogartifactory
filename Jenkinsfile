@@ -37,7 +37,7 @@ pipeline {
             steps { 
                 sh "mvn versions:set -DnewVersion=Dev-1.0.${BUILD_NUMBER}"
                 sh "mvn package install"
-                sh "rm -rf /home/ubuntu/.m2/settings.xml"
+                //sh "rm -rf /home/ubuntu/.m2/settings.xml"//
                 sh "cp dev-settings.xml /home/ubuntu/.m2/settings.xml"
             }
         }
