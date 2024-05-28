@@ -18,11 +18,11 @@ pipeline {
                 sh "java -version"
             }
         }
-        stage('Git checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Akshai183/jfrogartifactory.git'
-            }
-        }
+        #stage('Git checkout') {
+        #    steps {
+        #        git branch: 'main', url: 'https://github.com/Akshai183/jfrogartifactory.git'
+        #    }
+        #}
         stage('Dev mvn clean') {
             steps { 
                 sh "mvn clean"
@@ -37,8 +37,8 @@ pipeline {
             steps { 
                 sh "mvn versions:set -DnewVersion=Dev-1.0.${BUILD_NUMBER}"
                 sh "mvn package install"
-                sh "rm -rf /home/ubuntu/.m2/settings.xml"
-                sh "cp dev-settings.xml /home/ubuntu/.m2/settings.xml"
+                sh "sudo rm -rf /home/ubuntu/.m2/settings.xml"
+                sh "sudo cp dev-settings.xml /home/ubuntu/.m2/settings.xml"
             }
         }
         stage('Dev mvn package & deploy') {
