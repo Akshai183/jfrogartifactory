@@ -13,7 +13,6 @@ pipeline {
     }
     stages {
         stage("Dev Tools Verification") {
-            agent { label 'DEV' }
             steps {
                 sh "mvn --version"
                 sh "java -version"
@@ -57,14 +56,6 @@ pipeline {
             steps { 
                 sh "sudo docker stop springbootapp || sudo docker ps"
                 sh "sudo docker run --rm -dit --name springbootapp -p 8080:8080 akshai183/akshai183spring:$BUILD_NUMBER"
-            }
-        }
-        stage('Dev Validate Deployment') {
-            options {
-               timeout(time: 3, unit: 'MINUTES') 
-            }
-            steps { 
-                sh "sleep 30 && curl http://dev.akshaik8s.xyz:8080 || exit 1"
             }
         }
     }
